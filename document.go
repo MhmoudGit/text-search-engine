@@ -31,7 +31,8 @@ func LoadDocuments(path string) ([]Document, error) {
 		Documents []Document `xml:"doc"`
 	}{}
 
-	if err = decode.Decode(dump); err != nil {
+	err = decode.Decode(&dump)
+	if err != nil {
 		return nil, err
 	}
 
