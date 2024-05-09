@@ -24,7 +24,7 @@ func main() {
 	// Parse the HTML template
 	tmpl := template.Must(template.ParseFiles("static/templates/index.html"))
 
-	// Handle requests to the root path by serving the index.html file
+	// Handlers
 	mux.HandleFunc("GET /", func(w http.ResponseWriter, r *http.Request) {
 		http.ServeFile(w, r, "static/index.html")
 	})
@@ -38,7 +38,6 @@ func main() {
 			Results: searchResults,
 		}
 
-		// Execute the template, passing the data
 		err := tmpl.Execute(w, data)
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)

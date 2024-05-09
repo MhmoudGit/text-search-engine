@@ -34,7 +34,10 @@
 		<div class="flex flex-col justify-center items-center gap-3">
 			{{range .Results}}
 			<div class="border rounded-md p-4 flex flex-col md:w-[870px] gap-2">
-				<a href="{{.Url}}" class="text-2xl font-bold font-serif text-cyan-800"
+				<a
+					href="{{.Url}}"
+					target="_blank"
+					class="text-2xl font-bold font-serif text-cyan-800"
 					>{{.Title}}</a
 				>
 				<a class="text-sm text-gray-700">{{.Url}}</a>
