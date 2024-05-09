@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link href="/static/css/output.css" rel="stylesheet" />
+		<title>{{.Search}} - Wiki Search</title>
+	</head>
+	<body>
+		<div class="flex flex-col justify-center items-center m-6 gap-6">
+			<h1 class="text-4xl font-bold font-serif text-cyan-800">
+				WIKI SEARCH ENGINE
+			</h1>
+			<form
+				action="/templ"
+				method="post"
+				class="flex flex-col justify-center items-center gap-4"
+			>
+				<input
+					type="text"
+					id="search"
+					name="search"
+					placeholder="Type something here..."
+					class="p-3 border-b outline-none shadow-md w-96"
+				/>
+				<button
+					type="submit"
+					class="font-bold bg-cyan-400 hover:bg-cyan-500 text-white font-mono p-2 rounded-md"
+				>
+					Search
+				</button>
+			</form>
+		</div>
+		<div class="flex flex-col justify-center items-center gap-3">
+			{{range .Results}}
+			<div class="border rounded-md p-4 flex flex-col md:w-[870px] gap-2">
+				<a href="{{.Url}}" class="text-2xl font-bold font-serif text-cyan-800"
+					>{{.Title}}</a
+				>
+				<a class="text-sm text-gray-700">{{.Url}}</a>
+				<p class="font-semibold">{{.Text}}</p>
+			</div>
+			{{end}}
+		</div>
+	</body>
+</html>
