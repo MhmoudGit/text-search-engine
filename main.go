@@ -11,6 +11,7 @@ import (
 type Data struct {
 	Search  string
 	Results []engine.Document
+	Len     int
 }
 
 func main() {
@@ -20,7 +21,7 @@ func main() {
 
 	// Create a file server to serve static files
 	fs := http.FileServer(http.Dir("static"))
-	mux.Handle("/static/", http.StripPrefix("/static/", fs))
+	mux.Handle("GET /static/", http.StripPrefix("/static/", fs))
 	// Parse the HTML template
 	tmpl := template.Must(template.ParseFiles("static/templates/index.html"))
 
@@ -36,6 +37,7 @@ func main() {
 		var data = Data{
 			Search:  search,
 			Results: searchResults,
+			Len: len(searchResults),
 		}
 
 		err := tmpl.Execute(w, data)

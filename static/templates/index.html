@@ -29,9 +29,11 @@
 				>
 					Search
 				</button>
+				
 			</form>
 		</div>
 		<div class="flex flex-col justify-center items-center gap-3">
+			<p class="text-xs text-gray-600 md:w-[870px]">results: {{.Len}} documents</p>
 			{{range .Results}}
 			<div class="border rounded-md p-4 flex flex-col md:w-[870px] gap-2">
 				<a
